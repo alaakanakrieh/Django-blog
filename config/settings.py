@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+from dotenv import load_dotenv
+load_dotenv(override=True)
+
 from pathlib import Path
 from decouple import Csv, config
 
@@ -39,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'blog',
+    
 ]
 
 # Something related to sicurity. 
@@ -125,6 +130,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+
+OPENAI_API_KEY = config('OPENAI_API_KEY')
+OPENAI_MODEL = config('OPENAI_MODEL')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
